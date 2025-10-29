@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guida Completa Tool Kali Linux</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            padding: 45px;
+            border-radius: 12px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 2.8em;
+            border-bottom: 5px solid #667eea;
+            padding-bottom: 20px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 35px;
+            font-style: italic;
+            font-size: 1.2em;
+        }
+        
+        .stats {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 35px;
+        }
+        
+        .stats h3 {
+            margin-bottom: 12px;
+            font-size: 1.5em;
+        }
+        
+        .warning {
+            background: #fff3cd;
+            border-left: 6px solid #ffc107;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 8px;
+            font-size: 1em;
+        }
+        
+        .warning strong {
+            color: #856404;
+            font-size: 1.15em;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .warning ul {
+            margin: 15px 0 15px 30px;
+        }
+        
+        .warning li {
+            margin: 8px 0;
+        }
+        
+        .category {
+            margin: 45px 0;
+            page-break-inside: avoid;
+        }
+        
+        .category-title {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 18px 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            font-size: 1.7em;
+            box-shadow: 0 5px 8px rgba(0,0,0,0.15);
+        }
+        
+        .tool {
+            background: #f8f9fa;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-left: 6px solid #667eea;
+            border-radius: 8px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.08);
+        }
+        
+        .tool-name {
+            color: #2980b9;
+            font-size: 1.6em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .tool-description {
+            margin: 15px 0;
+            color: #34495e;
+            font-size: 1.05em;
+            line-height: 1.8;
+        }
+        
+        .tool-uses {
+            margin: 18px 0;
+            padding: 15px;
+            background: #e3f2fd;
+            border-radius: 6px;
+            border-left: 4px solid #2196f3;
+        }
+        
+        .tool-uses strong {
+            color: #1976d2;
+            font-size: 1.05em;
+        }
+        
+        .section-title {
+            color: #34495e;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin: 20px 0 12px 0;
+            padding-left: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .feature-list {
+            margin: 15px 0 15px 30px;
+            color: #555;
+        }
+        
+        .feature-list li {
+            margin: 10px 0;
+            line-height: 1.7;
+        }
+        
+        .feature-list strong {
+            color: #2c3e50;
+        }
+        
+        .command-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            margin: 18px 0;
+            overflow-x: auto;
+            font-size: 0.95em;
+            line-height: 1.9;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        
+        .command-block .comment {
+            color: #6a9955;
+        }
+        
+        .command-block .command {
+            color: #4ec9b0;
+        }
+        
+        .command-block .output {
+            color: #ce9178;
+        }
+        
+        .example-title {
+            color: #e67e22;
+            font-weight: bold;
+            margin: 15px 0 8px 0;
+            font-size: 1.05em;
+        }
+        
+        .download-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 18px 35px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2em;
+            cursor: pointer;
+            display: block;
+            margin: 40px auto;
+            box-shadow: 0 5px 8px rgba(0,0,0,0.15);
+            transition: all 0.3s;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            .download-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🐉 GUIDA COMPLETA KALI LINUX</h1>
+        <p class="subtitle">I Tool Più Famosi e Potenti per Penetration Testing</p>
+        
+        <div class="stats">
+            <h3>📊 Top 50+ Tool Professionali</h3>
+            <p>Gli strumenti più utilizzati dai professionisti della sicurezza informatica</p>
+            <p>Con esempi pratici dettagliati e casi d'uso reali</p>
+        </div>
+        
+        <div class="warning">
+            <strong>⚠️ AVVISO LEGALE IMPORTANTE</strong>
+            
+            L'utilizzo di questi strumenti su sistemi, reti o applicazioni <strong>senza esplicita autorizzazione scritta</strong> costituisce <strong>REATO PENALE</strong> grave.
+            
+            <ul>
+                <li><strong>Sanzioni penali:</strong> Reclusione fino a 5 anni</li>
+                <li><strong>Multe:</strong> Multe salate e risarcimenti danni</li>
+                <li><strong>Fedina penale:</strong> Conseguenze permanenti sulla carriera</li>
+            </ul>
+            
+            <strong>✅ Utilizzo LEGALE solo in questi casi:</strong>
+            <ul>
+                <li>Sistemi di tua proprietà</li>
+                <li>Con contratto/autorizzazione scritta esplicita</li>
+                <li>In ambienti di test/lab isolati</li>
+                <li>Per scopi educativi su macchine virtuali personali</li>
+            </ul>
+        </div>
+
+        <!-- ========================================= -->
+        <!-- CATEGORY 1: INFORMATION GATHERING -->
+        <!-- ========================================= -->
+        
+        <div class="category">
+            <div class="category-title">🔍 1. INFORMATION GATHERING (Raccolta Informazioni)</div>
+            
+            <!-- NMAP -->
+            <div class="tool">
+                <div class="tool-name">NMAP - Network Mapper</div>
+                
+                <div class="tool-description">
+                    Il tool di network scanning più famoso e potente al mondo, creato da Gordon Lyon (Fyodor). È lo standard de facto per la scoperta di host, porte, servizi e vulnerabilità. Supporta oltre 600 script NSE (Nmap Scripting Engine) per task avanzati come vulnerability detection, exploitation e backdoor discovery.
+                </div>
+                
+                <div class="tool-uses">
+                    <strong>📌 Usi Principali:</strong> Port scanning, service/version detection, OS fingerprinting, vulnerability scanning, network mapping, firewall evasion testing, network inventory
+                </div>
+                
+                <div class="section-title">🔧 Funzionalità Chiave</div>
+                <ul class="feature-list">
+                    <li><strong>Port Scanning:</strong> TCP/UDP/SCTP con tecniche stealth (SYN, FIN, NULL, Xmas, Idle scan)</li>
+                    <li><strong>Service Detection (-sV):</strong> Identifica versioni esatte dei servizi in ascolto</li>
+                    <li><strong>OS Detection (-O):</strong> Fingerprinting avanzato del sistema operativo</li>
+                    <li><strong>NSE Scripts:</strong> Oltre 600 script per vulnerability detection, brute force, discovery</li>
+                    <li><strong>Timing Templates:</strong> Da T0 (paranoid) a T5 (insane) per controllo velocità</li>
+                    <li><strong>Output Formats:</strong> Normal, XML, grepable, script kiddie</li>
+                    <li><strong>Firewall Evasion:</strong> Fragmentazione, decoys, source port manipulation</li>
+                </ul>
+                
+                <div class="section-title">💻 Esempi Pratici</div>
+                
+                <div class="example-title">🎯 Esempio 1: Scan Base con Service Detection</div>
+                <div class="command-block"><span class="comment"># Scan standard con rilevamento versioni servizi</span>
+<span class="command">nmap -sV 192.168.1.100</span>
+
+<span class="comment"># Output esempio:</span>
+<span class="output">PORT     STATE SERVICE    VERSION
+22/tcp   open  ssh        OpenSSH 8.2p1 Ubuntu
+80/tcp   open  http       Apache httpd 2.4.41
+3306/tcp open  mysql      MySQL 5.7.33</span></div>
+
+                <div class="example-title">🎯 Esempio 2: Scan Completo Aggressivo</div>
+                <div class="command-block"><span class="comment"># -A: Abilita OS detection, version detection, script scanning e traceroute</span>
+<span class="command">nmap -A -T4 192.168.1.100</span>
+
+<span class="comment"># T4: Timing template "aggressive" per scan veloce</span>
+<span class="comment"># Include: -O (OS detection), -sV (version), -sC (default scripts), --traceroute</span></div>
+
+                <div class="example-title">🎯 Esempio 3: Scan Tutte le Porte</div>
+                <div class="command-block"><span class="comment"># Scan completo di tutte le 65535 porte TCP</span>
+<span class="command">nmap -p- 192.168.1.100</span>
+
+<span class="comment"># Con service detection e timing veloce</span>
+<span class="command">nmap -p- -sV -T4 192.168.1.100</span>
+
+<span class="comment"># Solo top 1000 porte (default)</span>
+<span class="command">nmap 192.168.1.100</span></div>
+
+                <div class="example-title">🎯 Esempio 4: Stealth SYN Scan</div>
+                <div class="command-block"><span class="comment"># SYN scan (half-open): più stealth, richiede privilegi root</span>
+<span class="command">sudo nmap -sS 192.168.1.100</span>
+
+<span class="comment"># Non completa il TCP handshake, meno rilevabile dai log</span>
+<span class="comment"># Più veloce del connect() scan normale</span></div>
+
+                <div class="example-title">🎯 Esempio 5: Scan Vulnerabilità con NSE</div>
+                <div class="command-block"><span class="comment"># Esegue tutti gli script di categoria "vuln"</span>
+<span class="command">nmap --script vuln 192.168.1.100</span>
+
+<span class="comment"># Script specifici per vulnerabilità comuni</span>
+<span class="command">nmap --script http-vuln-* 192.168.1.100</span>
+
+<span class="comment"># SQL injection detection</span>
+<span class="command">nmap --script http-sql-injection 192.168.1.100</span>
+
+<span class="comment"># EternalBlue (MS17-010) check</span>
+<span class="command">nmap --script smb-vuln-ms17-010 192.168.1.100</span></div>
+
+                <div class="example-title">🎯 Esempio 6: Scan Intera Subnet</div>
+                <div class="command-block"><span class="comment"># Scan subnet /24 (254 host)</span>
+<span class="command">nmap -sV -T4 192.168.1.0/24</span>
+
+<span class="comment"># Solo discovery host vivi (no port scan)</span>
+<span class="command">nmap -sn 192.168.1.0/24</span>
+
+<span class="comment"># Output su file XML per parsing</span>
+<span class="command">nmap -sV 192.168.1.0/24 -oX scan_results.xml</span></div>
+
+                <div class="example-title">🎯 Esempio 7: OS Detection</div>
+                <div class="command-block"><span class="comment"># Rileva sistema operativo</span>
+<span class="command">sudo nmap -O 192.168.1.100</span>
+
+<span class="comment"># Con aggressive detection</span>
+<span class="command">sudo nmap -O --osscan-guess 192.168.1.100</span>
+
+<span class="output"># Output esempio:
+Running: Linux 4.X|5.X
+OS CPE: cpe:/o:linux:linux_kernel:4 cpe:/o:linux:linux_kernel:5
+OS details: Linux 4.15 - 5.6</span></div>
+
+                <div class="example-title">🎯 Esempio 8: UDP Scan (Lento ma Importante)</div>
+                <div class="command-block"><span class="comment"># UDP scan top 1000 porte (MOLTO lento)</span>
+<span class="command">sudo nmap -sU 192.168.1.100</span>
+
+<span class="comment"># UDP scan porte specifiche comuni</span>
+<span class="command">sudo nmap -sU -p 53,67,68,161,162,500 192.168.1.100</span>
+
+<span class="comment"># Combinato TCP + UDP scan</span>
+<span class="command">sudo nmap -sS -sU -p T:80,443,U:53,161 192.168.1.100</span></div>
+
+                <div class="example-title">🎯 Esempio 9: Firewall Evasion</div>
+                <div class="command-block"><span class="comment"># Fragmentazione pacchetti per evitare firewall</span>
+<span class="command">nmap -f 192.168.1.100</span>
+
+<span class="comment"># Decoy scan: nasconde IP reale tra IP fake</span>
+<span class="command">nmap -D RND:10 192.168.1.100</span>
+<span class="comment"># Genera 10 IP random come decoy</span>
+
+<span class="comment"># Source port manipulation</span>
+<span class="command">nmap --source-port 53 192.168.1.100</span>
+<span class="comment"># Usa porta sorgente 53 (DNS) spesso permessa da firewall</span></div>
+
+                <div class="example-title">🎯 Esempio 10: Script NSE Specifici</div>
+                <div class="command-block"><span class="comment"># HTTP enumeration completo</span>
+<span class="command">nmap --script http-enum,http-headers,http-methods 192.168.1.100</span>
+
+<span class="comment"># SMB enumeration</span>
+<span class="command">nmap --script smb-enum-shares,smb-enum-users 192.168.1.100</span>
+
+<span class="comment"># Brute force SSH</span>
+<span class="command">nmap --script ssh-brute --script-args userdb=users.txt,passdb=pass.txt 192.168.1.100</span>
+
+<span class="comment"># Heartbleed vulnerability check</span>
+<span class="command">nmap --script ssl-heartbleed 192.168.1.100</span></div>
+            </div>
+
+            <!-- WIRESHARK -->
+            <div class="tool">
+                <div class="tool-name">Wireshark</div>
+                
+                <div class="tool-description">
+                    L'analizzatore di protocollo di rete più popolare e potente al mondo. Cattura traffico live da interfacce di rete e permette deep packet inspection con dissector per oltre 2000 protocolli. Interfaccia grafica intuitiva con filtri display e capture estremamente potenti. Essenziale per network troubleshooting, analisi malware, forensics e security assessment.
+                </div>
+                
+                <div class="tool-uses">
+                    <strong>📌 Usi Principali:</strong> Network troubleshooting, protocol analysis, forensics di rete, malware analysis, debugging applicazioni, security auditing, packet inspection dettagliato
+                </div>
+                
+                <div class="section-title">🔧 Funzionalità Chiave</div>
+                <ul class="feature-list">
+                    <li><strong>Live Capture:</strong> Cattura pacchetti in tempo reale da interfacce multiple</li>
+                    <li><strong>Deep Inspection:</strong> Analisi dettagliata di 2000+ protocolli di rete</li>
+                    <li><strong>Display Filters:</strong> Filtri potentissimi per isolare traffico specifico</li>
+                    <li><strong>Follow Streams:</strong> Ricostruzione completa di sessioni TCP/UDP/HTTP/TLS</li>
+                    <li><strong>Export Objects:</strong> Estrazione file, immagini, documenti dal traffico HTTP</li>
+                    <li><strong>Statistics:</strong> Grafici e statistiche dettagliate del traffico</li>
+                    <li><strong>Colorization:</strong> Colorazione pacchetti per identificazione rapida</li>
+                    <li><strong>PCAP Analysis:</strong> Analisi offline di file PCAP salvati</li>
+                </ul>
+                
+                <div class="section-title">💻 Esempi Pratici</div>
+                
+                <div class="example-title">🎯 Esempio 1: Avvio e Cattura Base</div>
+                <div class="command-block"><span class="comment"># Avvio Wireshark GUI</span>
+<span class="command">wireshark</span>
+
+<span class="comment"># Cattura su interfaccia specifica</span>
+<span class="command">wireshark -i eth0</span>
+
+<span class="comment"># Avvio con file PCAP esistente</span>
+<span class="command">wireshark capture.pcap</span>
+
+<span class="comment"># Lista interfacce disponibili</span>
+<span class="command">wireshark -D</span></div>
+
+                <div class="example-title">🎯 Esempio 2: Filtri Display Essenziali</div>
+                <div class="command-block"><span class="comment"># ===== FILTRI PROTOCOLLO =====</span>
+
+<span class="comment"># Solo traffico HTTP</span>
+http
+
+<span class="comment"># Solo traffico HTTPS/TLS</span>
+tls
+
+<span class="comment"># Solo DNS queries/responses</span>
+dns
+
+<span class="comment"># Solo FTP</span>
+ftp
+
+<span class="comment"># Solo SSH</span>
+ssh
+
+<span class="comment"># ===== FILTRI IP =====</span>
+
+<span class="comment"># Traffico da/verso IP specifico</span>
+ip.addr == 192.168.1.100
+
+<span class="comment"># Solo traffico da IP sorgente</span>
+ip.src == 192.168.1.100
+
+<span class="comment"># Solo traffico verso IP destinazione</span>
+ip.dst == 192.168.1.100
+
+<span class="comment"># Range di IP</span>
+ip.addr >= 192.168.1.0 and ip.addr <= 192.168.1.255
+
+<span class="comment"># ===== FILTRI PORTE =====</span>
+
+<span class="comment"># Traffico su porta 80 (HTTP)</span>
+tcp.port == 80
+
+<span class="comment"># Porte multiple</span>
+tcp.port == 80 || tcp.port == 443 || tcp.port == 8080
+
+<span class="comment"># Porta sorgente specifica</span>
+tcp.srcport == 12345
+
+<span class="comment"># Porta destinazione</span>
+tcp.dstport == 443</div>
+
+                <div class="example-title">🎯 Esempio 3: Filtri TCP Avanzati</div>
+                <div class="command-block"><span class="comment"># Pacchetti con flag SYN (inizio connessione)</span>
+tcp.flags.syn == 1
+
+<span class="comment"># Solo SYN senza ACK (nuove connessioni)</span>
+tcp.flags.syn == 1 and tcp.flags.ack == 0
+
+<span class="comment"># Pacchetti RST (connessione rifiutata/resettata)</span>
+tcp.flags.reset == 1
+
+<span class="comment"># TCP retransmissions (problemi di rete)</span>
+tcp.analysis.retransmission
+
+<span class="comment"># Pacchetti duplicati</span>
+tcp.analysis.duplicate_ack</div>
+
+                <div class="example-title">🎯 Esempio 4: Cattura Credenziali in Chiaro</div>
+                <div class="command-block"><span class="comment"># HTTP Basic Authentication (username:password in chiaro!)</span>
+http.authbasic
+
+<span class="comment"># FTP LOGIN credentials</span>
+ftp.request.command == "USER" || ftp.request.command == "PASS"
+
+<span class="comment"># Ricerca parola "password" nei pacchetti</span>
+frame contains "password"
+
+<span class="comment"># Ricerca "login" case-insensitive</span>
+frame matches "(?i)login"
+
+<span class="comment"># POST requests (spesso contengono form data)</span>
+http.request.method == "POST"</div>
+
+                <div class="example-title">🎯 Esempio 5: Analisi HTTP</div>
+                <div class="command-block"><span class="comment"># Tutte le richieste HTTP GET</span>
+http.request.method == "GET"
+
+<span class="comment"># Richieste POST con form data</span>
+http.request.method == "POST"
+
+<span class="comment"># Errori HTTP (4xx e 5xx)</span>
+http.response.code >= 400
+
+<span class="comment"># Solo HTTP 200 OK</span>
+http.response.code == 200
+
+<span class="comment"># Richieste a dominio specifico</span>
+http.host == "example.com"
+
+<span class="comment"># Cookie nel traffico HTTP</span>
+http.cookie
+
+<span class="comment"># User-Agent specifico</span>
+http.user_agent contains "Mozilla"</div>
+
+                <div class="example-title">🎯 Esempio 6: Follow TCP Stream</div>
+                <div class="command-block"><span class="comment"># WORKFLOW per vedere conversazione completa:</span>
+
+1. Trova pacchetto interessante (es. HTTP request)
+2. Click destro -> Follow -> TCP Stream
+3. Visualizza intera conversazione client-server
+4. Utile per vedere:
+   - Contenuto completo richieste/risposte HTTP
+   - Sessioni FTP con comandi e file
+   - Dati trasferiti in chiaro
+
+<span class="comment"># Shortcut: Ctrl+Alt+Shift+T su pacchetto selezionato</span></div>
+
+                <div class="example-title">🎯 Esempio 7: Export HTTP Objects</div>
+                <div class="command-block"><span class="comment"># Estrai file scaricati via HTTP</span>
+
+1. File -> Export Objects -> HTTP
+2. Visualizza lista tutti gli oggetti HTTP catturati
+3. Salva singoli file o tutti
+4. Utile per:
+   - Estrarre file scaricati
+   - Salvare immagini visualizzate
+   - Recuperare documenti trasferiti
+
+<span class="comment"># Supporta anche: IMF (email), SMB, DICOM</span></div>
+
+                <div class="example-title">🎯 Esempio 8: Filtri DNS</div>
+                <div class="command-block"><span class="comment"># Tutte le query DNS</span>
+dns.flags.response == 0
+
+<span class="comment"># Solo risposte DNS</span>
+dns.flags.response == 1
+
+<span class="comment"># Query per dominio specifico</span>
+dns.qry.name == "example.com"
+
+<span class="comment"># Query DNS type A (IPv4)</span>
+dns.qry.type == 1
+
+<span class="comment"># Query DNS type AAAA (IPv6)</span>
+dns.qry.type == 28
+
+<span class="comment"># DNS query che contiene stringa</span>
+dns.qry.name contains "malware"</div>
+
+                <div class="example-title">🎯 Esempio 9: Statistiche Utili</div>
+                <div class="command-block"><span class="comment"># Statistics menu offre analisi potenti:</span>
+
+<span class="comment"># Protocol Hierarchy</span>
+Statistics -> Protocol Hierarchy
+<span class="comment"># Mostra % di ogni protocollo nel traffico catturato</span>
+
+<span class="comment"># Conversations</span>
+Statistics -> Conversations
+<span class="comment"># Lista tutte le conversazioni tra IP</span>
+
+<span class="comment"># Endpoints</span>
+Statistics -> Endpoints
+<span class="comment"># Lista tutti gli host comunicanti</span>
+
+<span class="comment"># HTTP Statistics</span>
+Statistics -> HTTP -> Requests
+<span class="comment"># Statistiche dettagliate richieste HTTP</span>
+
+<span class="comment"># I/O Graph</span>
+Statistics -> I/O Graph
+<span class="comment"># Grafico traffico nel tempo</span></div>
+
+                <div class="example-title">🎯 Esempio 10: Capture Filters (BPF Syntax)</div>
+                <div class="command-block"><span class="comment"># Capture filters si applicano DURANTE la cattura</span>
+<span class="comment"># Sintassi Berkeley Packet Filter (BPF)</span>
+
+<span class="comment"># Cattura solo HTTP</span>
+port 80
+
+<span class="comment"># Cattura HTTP e HTTPS</span>
+port 80 or port 443
+
+<span class="comment"># Cattura traffico da/verso host</span>
+host 192.168.1.100
+
+<span class="comment"># Cattura solo traffico da host</span>
+src host 192.168.1.100
+
+<span class="comment"># Cattura subnet</span>
+net 192.168.1.0/24
+
+<span class="comment"># Esclude traffico SSH (per ridurre rumore)</span>
+not port 22
+
+<span class="comment"># Solo TCP traffic</span>
+tcp
+
+<span class="comment"># Solo UDP traffic</span>
+udp</div>
+            </div>
+
+            <!-- BURP SUITE -->
+            <div class="tool">
+                <div class="tool-name">Burp Suite</div>
+                
+                <div class="tool-description">
+                    LA piattaforma integrata professionale per web application security testing, considerata lo standard industriale del settore. Burp Suite è usato da praticamente tutti i penetration tester professionisti per testare sicurezza di applicazioni web. È un proxy intercepting che permette di intercettare, analizzare e modificare tutto il traffico HTTP/HTTPS tra browser e server. Include scanner automatico, intruder per attacks automatizzati, repeater per test manuali e molti altri moduli potenti.
+                </div>
+                
+                <div class="tool-uses">
+                    <strong>📌 Usi Principali:</strong> Web application penetration testing, API security testing, vulnerability discovery, manual testing, automated scanning, session analysis, authentication testing
+                </div>
+                
+                <div class="section-title">🔧 Moduli Principali</div>
+                <ul class="feature-list">
+                    <li><strong>Proxy:</strong> Intercetta e modifica traffico HTTP/HTTPS in tempo reale tra browser e applicazione</li>
+                    <li><strong>Spider/Crawler:</strong> Mappatura automatica dell'applicazione, scopre contenuti e funzionalità</li>
+                    <li><strong>Scanner:</strong> Detection automatica vulnerabilità (SQL injection,
